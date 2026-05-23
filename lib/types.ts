@@ -27,6 +27,7 @@ export interface TileInstance {
 }
 
 export interface HandSnapshot {
+  id: string;
   tiles: TileInstance[];
   total: number;
   bet?: BetDirection;

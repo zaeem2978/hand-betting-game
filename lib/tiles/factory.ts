@@ -26,6 +26,13 @@ export function dedupeTilesById(tiles: TileInstance[]): TileInstance[] {
   });
 }
 
+export function createSnapshotId(): string {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `snap-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+}
+
 function createNumberTile(suit: NumberSuit, rank: number): TileInstance {
   return { id: nextId(), category: "number", suit, rank };
 }

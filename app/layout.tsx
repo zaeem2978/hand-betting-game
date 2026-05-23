@@ -32,7 +32,9 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} ${notoSansSC.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   );
 }

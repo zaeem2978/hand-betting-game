@@ -27,7 +27,7 @@ export function HandHistory({ history }: HandHistoryProps) {
       <ul className="history-list">
         {[...history].reverse().map((hand, index) => (
           <li
-            key={`round-${history.length - index}`}
+            key={hand.id}
             className="history-item"
             style={{ animationDelay: `${index * 40}ms` }}
           >
@@ -48,7 +48,7 @@ export function HandHistory({ history }: HandHistoryProps) {
             <div className="history-tiles">
               {hand.tiles.map((tile, tileIndex) => (
                 <Tile
-                  key={`${history.length - index}-${tileIndex}-${tile.id}`}
+                  key={`${hand.id}-${tileIndex}`}
                   tile={tile}
                   size="sm"
                 />

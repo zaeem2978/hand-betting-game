@@ -8,6 +8,7 @@ import {
   cloneTile,
   cloneTiles,
   createFreshDeck,
+  createSnapshotId,
   dedupeTilesById,
   getHandTotal,
   getTileValue,
@@ -74,6 +75,7 @@ function drawTiles(
 
     const tile = pile.pop();
     if (!tile) break;
+    if (drawn.some((t) => t.id === tile.id)) continue;
     drawn.push(tile);
   }
 
@@ -217,6 +219,7 @@ function placeBet(state: GameState, bet: BetDirection): GameState {
   }
 
   const snapshot = {
+    id: createSnapshotId(),
     tiles: cloneTiles(scaledHand),
     total: nextTotal,
     bet,
@@ -224,8 +227,11 @@ function placeBet(state: GameState, bet: BetDirection): GameState {
     comparedToTotal: previousTotal,
   };
 
-  let drawPile = drawResult.drawPile;
-  let discardPile = [...state.discardPile, ...state.currentHand];
+  let drawPile = dedupeTilesById(drawResult.drawPile);
+  const newDiscard = state.currentHand.filter(
+    (tile) => !state.discardPile.some((d) => d.id === tile.id),
+  );
+  let discardPile = dedupeTilesById([...state.discardPile, ...newDiscard]);
   const synced = syncTileValues(scaledHand, drawPile, discardPile);
   drawPile = synced.drawPile;
   discardPile = synced.discardPile;

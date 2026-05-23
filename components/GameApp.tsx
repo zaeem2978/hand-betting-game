@@ -32,9 +32,9 @@ export function GameApp() {
     if (state.handHistory.length <= historyLenRef.current) return;
 
     const last = state.handHistory[state.handHistory.length - 1];
-    historyLenRef.current = state.handHistory.length;
-
     if (!last.result) return;
+
+    historyLenRef.current = state.handHistory.length;
 
     const pointsEarned =
       last.result === "win" && last.comparedToTotal != null
