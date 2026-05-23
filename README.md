@@ -57,6 +57,7 @@ hooks/
   useGame.ts        — Reducer wrapper
   useLeaderboard.ts — localStorage top-5 scores
 components/
+  Logo.tsx          — SVG game logo (mahjong tiles + bet arrows)
   landing/          — Landing page & leaderboard
   game/             — Board, tiles, betting, history
   gameover/         — End-of-game screen

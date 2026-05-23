@@ -185,6 +185,23 @@ body {
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
 }
 
+.landing-logo {
+  display: block;
+  margin: 0 auto 1.25rem;
+  filter: drop-shadow(0 6px 16px rgba(212, 168, 83, 0.25));
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
 .landing-badge {
   display: inline-block;
   padding: 0.35rem 1rem;
@@ -274,9 +291,14 @@ body {
 }
 
 .game-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
+}
+
+.game-header-logo {
+  justify-self: center;
+  opacity: 0.95;
 }
 
 .score-display {
@@ -287,6 +309,7 @@ body {
   background: var(--bg-surface);
   border-radius: var(--radius);
   border: 1px solid rgba(212, 168, 83, 0.2);
+  justify-self: end;
 }
 
 .score-label {
@@ -554,6 +577,12 @@ body {
   animation: fadeSlideIn 500ms ease-out;
   max-width: 420px;
   width: 100%;
+}
+
+.game-over-logo {
+  display: block;
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 4px 12px rgba(212, 168, 83, 0.2));
 }
 
 .game-over-label {

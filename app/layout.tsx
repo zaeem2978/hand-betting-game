@@ -17,6 +17,9 @@ const notoSansSC = Noto_Sans_SC({
 export const metadata: Metadata = {
   title: "Hand Betting Game",
   description: "A Mahjong tile hand betting game built with Next.js",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({

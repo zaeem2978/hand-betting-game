@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import type { LeaderboardEntry } from "@/lib/types";
 import { Leaderboard } from "./Leaderboard";
 
@@ -10,7 +11,7 @@ export function LandingPage({ onStartGame, entries }: LandingPageProps) {
   return (
     <div className="landing">
       <div className="landing-hero">
-        <div className="landing-badge">Mahjong</div>
+        <Logo size={88} className="landing-logo" />
         <h1 className="landing-title">Hand Betting Game</h1>
         <p className="landing-subtitle">
           Read the hand, trust your instinct, and bet on what comes next.

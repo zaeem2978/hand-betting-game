@@ -1,3 +1,4 @@
+import { Logo } from "@/components/Logo";
 import type { BetDirection, GameState } from "@/lib/types";
 import { BetControls } from "./BetControls";
 import { CurrentHand } from "./CurrentHand";
@@ -17,6 +18,7 @@ export function GameBoard({ state, onBet, onExit }: GameBoardProps) {
         <button type="button" className="btn btn-ghost" onClick={onExit}>
           ← Exit
         </button>
+        <Logo size={40} className="game-header-logo" decorative />
         <div className="score-display">
           <span className="score-label">Score</span>
           <span className="score-value">{state.score}</span>

@@ -1,3 +1,5 @@
+import { Logo } from "@/components/Logo";
+
 interface GameOverScreenProps {
   score: number;
   reason?: string;
@@ -14,6 +16,7 @@ export function GameOverScreen({
   return (
     <div className="game-over">
       <div className="game-over-card">
+        <Logo size={64} className="game-over-logo" />
         <p className="game-over-label">Game Over</p>
         <h2 className="game-over-score">{score}</h2>
         <p className="game-over-sub">Final Score</p>
