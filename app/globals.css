@@ -320,8 +320,15 @@ body {
   color: var(--accent-gold-light);
 }
 
-.pile-area {
+.game-focus-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.current-hand-wrapper {
   position: relative;
+  overflow: visible;
 }
 
 .pile-counts {
@@ -356,12 +363,6 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--accent-sky);
-}
-
-.game-main {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
 }
 
 /* ── Current Hand ── */
@@ -619,12 +620,11 @@ body {
 /* ── Bet result modal ── */
 
 .bet-modal-backdrop {
-  position: relative;
-  left: auto;
-  right: auto;
-  top: auto;
-  margin-top: 0.75rem;
-  z-index: 10;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(60% + 0.25rem);
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;

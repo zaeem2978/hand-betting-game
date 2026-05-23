@@ -32,25 +32,26 @@ export function GameBoard({
         </div>
       </header>
 
-      <div className="pile-area">
+      <div className="game-focus-area">
         <PileCounts
           drawCount={state.drawPile.length}
           discardCount={state.discardPile.length}
           deckExhaustionCount={state.deckExhaustionCount}
         />
-        {betFeedback && (
-          <BetResultModal
-            result={betFeedback.result}
-            pointsEarned={betFeedback.pointsEarned}
-          />
-        )}
-      </div>
 
-      <div className="game-main">
-        <CurrentHand
-          tiles={state.currentHand}
-          awaitingBet={state.awaitingBet}
-        />
+        <div className="current-hand-wrapper">
+          {betFeedback && (
+            <BetResultModal
+              result={betFeedback.result}
+              pointsEarned={betFeedback.pointsEarned}
+            />
+          )}
+          <CurrentHand
+            tiles={state.currentHand}
+            awaitingBet={state.awaitingBet}
+          />
+        </div>
+
         <BetControls
           onBet={onBet}
           disabled={!state.awaitingBet || betLocked}
