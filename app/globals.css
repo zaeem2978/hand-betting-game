@@ -291,14 +291,9 @@ body {
 }
 
 .game-header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
-}
-
-.game-header-logo {
-  justify-self: center;
-  opacity: 0.95;
+  justify-content: space-between;
 }
 
 .score-display {
@@ -309,7 +304,6 @@ body {
   background: var(--bg-surface);
   border-radius: var(--radius);
   border: 1px solid rgba(212, 168, 83, 0.2);
-  justify-self: end;
 }
 
 .score-label {
@@ -324,6 +318,10 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--accent-gold-light);
+}
+
+.pile-area {
+  position: relative;
 }
 
 .pile-counts {
@@ -579,12 +577,6 @@ body {
   width: 100%;
 }
 
-.game-over-logo {
-  display: block;
-  margin: 0 auto 1rem;
-  filter: drop-shadow(0 4px 12px rgba(212, 168, 83, 0.2));
-}
-
 .game-over-label {
   margin: 0;
   font-size: 0.85rem;
@@ -622,6 +614,115 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+/* ── Bet result modal ── */
+
+.bet-modal-backdrop {
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  margin-top: 0.75rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  pointer-events: none;
+  animation: modalFlash 1s ease-out forwards;
+}
+
+.bet-modal {
+  padding: 1.5rem 2.5rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: modalPopIn 1s ease-out forwards;
+}
+
+.bet-modal-win {
+  background: rgba(30, 67, 50, 0.72);
+  border: 1.5px solid rgba(109, 212, 154, 0.45);
+}
+
+.bet-modal-loss {
+  background: rgba(67, 30, 30, 0.72);
+  border: 1.5px solid rgba(240, 128, 112, 0.45);
+}
+
+.bet-modal-push {
+  background: rgba(42, 48, 64, 0.72);
+  border: 1.5px solid rgba(154, 168, 188, 0.35);
+}
+
+.bet-modal-label {
+  margin: 0;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.bet-modal-win .bet-modal-label {
+  color: #6dd49a;
+}
+
+.bet-modal-loss .bet-modal-label {
+  color: #f08070;
+}
+
+.bet-modal-push .bet-modal-label {
+  color: var(--text-muted);
+}
+
+.bet-modal-points {
+  margin: 0.35rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-gold-light);
+}
+
+.bet-modal-sub {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+@keyframes modalFlash {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes modalPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  78% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
 }
 
 /* ── Animations ── */

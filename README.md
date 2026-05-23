@@ -45,7 +45,7 @@ npm start
 
 ## Architecture
 
-The codebase is organized for easy extension during onsite interviews:
+The codebase is organized for easy extension during onsite interview:
 
 ```
 lib/
@@ -57,7 +57,6 @@ hooks/
   useGame.ts        — Reducer wrapper
   useLeaderboard.ts — localStorage top-5 scores
 components/
-  Logo.tsx          — SVG game logo (mahjong tiles + bet arrows)
   landing/          — Landing page & leaderboard
   game/             — Board, tiles, betting, history
   gameover/         — End-of-game screen
@@ -77,9 +76,7 @@ Key extension points:
 |------|----------|
 | Project scaffolding | Created with `create-next-app` |
 | Game logic & architecture | Handwritten — reducer, tile factory, types |
-| UI components & CSS | Handwritten with AI-assisted polish suggestions |
-| README | AI-assisted draft, reviewed and edited |
-
+| UI components & CSS | Handwritten with AI-assisted polish suggestions 
 ---
 
 Built as a technical assessment submission.
