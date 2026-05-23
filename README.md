@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hand Betting Game
 
-## Getting Started
+A web-based Mahjong tile betting game built with **Next.js**, **React**, and **TypeScript**. Predict whether the next hand's total will be higher or lower than the current one — and watch dragon and wind tile values shift over time.
 
-First, run the development server:
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## How to Play
 
-To learn more about Next.js, take a look at the following resources:
+1. **Start** — Click **New Game** on the landing page.
+2. **Read the hand** — Five Mahjong tiles are dealt. The total value is shown.
+3. **Bet** — Choose **Bet Higher** or **Bet Lower** for the *next* hand's total.
+4. **Score** — Correct bets earn points equal to the absolute difference between the two hand totals.
+5. **Game Over** when:
+   - Any dragon or wind tile reaches value **0** or **10**
+   - The draw pile empties for the **3rd** time
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Tile Values
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Type | Value |
+|------|-------|
+| Number tiles (1–9) | Face value |
+| Dragons & Winds | Start at **5**; +1 when in a winning hand, −1 when in a losing hand |
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js 16** (App Router)
+- **React 19** with `useReducer` for state management
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Poppins** (Google Font) for UI typography; **Noto Sans SC** for Mahjong tile characters
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Architecture
+
+The codebase is organized for easy extension during onsite interviews:
+
+```
+lib/
+  types.ts          — Shared TypeScript types
+  constants.ts      — Tunable game parameters
+  tiles/            — Deck factory, shuffle, display helpers
+  game/reducer.ts   — Pure game logic (useReducer)
+hooks/
+  useGame.ts        — Reducer wrapper
+  useLeaderboard.ts — localStorage top-5 scores
+components/
+  landing/          — Landing page & leaderboard
+  game/             — Board, tiles, betting, history
+  gameover/         — End-of-game screen
+```
+
+State is managed entirely with React's **`useReducer`** — no external state libraries.
+
+Key extension points:
+
+- `lib/constants.ts` — hand size, score rules, deck composition
+- `lib/game/reducer.ts` — add new actions or game phases
+- `lib/types.ts` — extend tile types or game state
+
+## AI Utilization
+
+| Area | Approach |
+|------|----------|
+| Project scaffolding | Created with `create-next-app` |
+| Game logic & architecture | Handwritten — reducer, tile factory, types |
+| UI components & CSS | Handwritten with AI-assisted polish suggestions |
+| README | AI-assisted draft, reviewed and edited |
+
+---
+
+Built as a technical assessment submission.
